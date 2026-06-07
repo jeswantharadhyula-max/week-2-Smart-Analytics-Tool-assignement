@@ -1,0 +1,12 @@
+The dataset contains information about 784 passengers, including:
+
+Survival status
+Passenger class
+Gender
+Age
+Number of siblings/spouses aboard
+Number of parents/children aboard
+Fare paid
+Port of embarkation
+
+The objective is to identify the key factors that contributed to passenger survival.

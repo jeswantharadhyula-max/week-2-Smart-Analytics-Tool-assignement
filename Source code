@@ -1,0 +1,68 @@
+Chapter 1: The Disaster
+total_passengers = len(df)
+survivors = df['survived'].sum()
+
+print(f"Total Passengers: {total_passengers}")
+print(f"Survivors: {survivors}")
+print(f"Survival Rate: {(survivors/total_passengers)*100:.1f}%")
+
+Then explain:
+
+Only about 38% of passengers survived the Titanic disaster.
+
+Chapter 2: Did Gender Matter?
+sns.countplot(data=df, x='sex', hue='survived')
+plt.title('Survival by Gender')
+plt.show()
+
+Story:
+
+Women were far more likely to survive than men, reflecting the "women and children first" evacuation policy.
+
+Chapter 3: Did Wealth Matter?
+sns.countplot(data=df, x='pclass', hue='survived')
+plt.title('Survival by Passenger Class')
+plt.show()
+
+Story:
+
+First-class passengers had significantly higher survival rates than third-class passengers.
+
+Chapter 4: Did Age Matter?
+sns.histplot(df['age'], bins=30, kde=True)
+plt.title('Age Distribution')
+plt.show()
+
+Story:
+
+Most passengers were young adults, but children often had better survival chances.
+
+Chapter 5: The Cost of Survival
+sns.boxplot(data=df, x='survived', y='fare')
+plt.title('Fare vs Survival')
+plt.show()
+
+Story:
+
+Passengers paying higher fares generally had better access to lifeboats and survival opportunities.
+
+Final Dashboard
+
+Instead of 10 separate charts, create 4 key charts arranged together:
+
+fig, axes = plt.subplots(2,2, figsize=(14,10))
+
+sns.countplot(data=df, x='survived', ax=axes[0,0])
+axes[0,0].set_title("Overall Survival")
+
+sns.countplot(data=df, x='sex', hue='survived', ax=axes[0,1])
+axes[0,1].set_title("Gender Impact")
+
+sns.countplot(data=df, x='pclass', hue='survived', ax=axes[1,0])
+axes[1,0].set_title("Class Impact")
+
+sns.boxplot(data=df, x='survived', y='fare', ax=axes[1,1])
+axes[1,1].set_title("Fare Impact")
+
+plt.tight_layout()
+plt.show()
